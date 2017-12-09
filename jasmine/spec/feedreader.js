@@ -81,9 +81,28 @@ $(function() {
     });
     /* TODO: Write a new test suite named "Initial Entries" */
     describe("Initial Entries", function() {
-        it('jhkj', function(){
-            var feed = $('.feed').find(".entry");
+        var numberOfEntries;
+        beforeEach(function (done) {
+            setTimeout(function () {
+                numberOfEntries = $('.feed').find(".entry").length;
+                done();
+            }, 2000);
         });
+        it("there is at least a single .entry element within the .feed container", function (done) {
+            console.log($('.feed').find(".entry").length);
+            expect(numberOfEntries).toBeGreaterThan(0);
+            done();
+        });
+
+        //Doesn't work because it Doesn't recognize spec inside Timeout func
+        /*
+        setTimeout(function() {
+            it("there is at least a single .entry element within the .feed container", function (done) {
+                console.log($('.feed').find(".entry").length);
+                expect(numberOfEntries).toBeGreaterThan(0);
+            }, 2000);
+        })
+        */
     });
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
