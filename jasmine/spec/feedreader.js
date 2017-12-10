@@ -81,7 +81,7 @@ $(function() {
     });
     /* TODO: Write a new test suite named "Initial Entries" */
     describe("Initial Entries", function() {
-        var numberOfEntries;
+        let numberOfEntries;
         beforeEach(function (done) {
             setTimeout(function () {
                 numberOfEntries = $('.feed').find(".entry").length;
@@ -89,7 +89,6 @@ $(function() {
             }, 2000);
         });
         it("there is at least a single .entry element within the .feed container", function (done) {
-            console.log($('.feed').find(".entry").length);
             expect(numberOfEntries).toBeGreaterThan(0);
             done();
         });
@@ -117,5 +116,25 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+    describe("New Feed Selection", function() {
+        let entryLinks = [];
+        //Run loadFeed(0) and loadFeed(1) and get first link in each feed
+        beforeEach(function (done) {
+            for (let i = 0; i <= 1; i++) {
+                loadFeed(i, function () {
+                    //get first entry link in the feed
+                    let link = $('.entry-link').first().attr("href");
+                    entryLinks.push(link);
+                    done();
+                });
+            }
+            
+        });
+        it("the content changes when a new feed is loaded by the loadFeed function", function (done) {
+            //compare first entry links in feed(0) and feed(1);
+            expect(entryLinks[0]).not.toEqual(entryLinks[1]);
+            done();
+        });
+    })
 
-}());
+});
