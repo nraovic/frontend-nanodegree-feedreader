@@ -82,13 +82,14 @@ $(function() {
     /* TODO: Write a new test suite named "Initial Entries" */
     describe("Initial Entries", function() {
         let numberOfEntries;
+        //check the number of entries in feed when loadFeed function is completed
         beforeEach(function (done) {
-            setTimeout(function () {
+            loadFeed(0, function () {
                 numberOfEntries = $('.feed').find(".entry").length;
                 done();
-            }, 2000);
+            });
         });
-        it("there is at least a single .entry element within the .feed container", function (done) {
+        it("there is at least a single .entry element within the .feed container", function(done) {
             expect(numberOfEntries).toBeGreaterThan(0);
             done();
         });
