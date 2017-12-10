@@ -58,7 +58,7 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('changes visibility when the menu icon is clicked', function(){
-            var menuIcon = $('.menu-icon-link');
+            const menuIcon = $('.menu-icon-link');
             $(menuIcon).click(); //triger click event first time
             expect(body.className).not.toBe('menu-hidden');
             $(menuIcon).click(); //triger click event second time
