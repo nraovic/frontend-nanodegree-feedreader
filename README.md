@@ -5,6 +5,7 @@ This project uses [Jasmine](http://jasmine.github.io/) to test a pre-existing we
 ## How to run the application
 
 You can run the application [here](https://nraovic.github.io/frontend-nanodegree-feedreader/)
+
 Or download the repository to your computer, unzip it and run index.html
 
 ## Tests included
