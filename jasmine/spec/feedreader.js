@@ -48,9 +48,10 @@ $(function() {
         /* Test that ensures the menu element is
          * hidden by default. 
          */
-        const body = document.body;
+        //check if the body has 'menu-hidden' class
+        const body = $('body');
         it("is hidden", function() {
-            expect(body.className).toBe('menu-hidden');
+            expect(body.hasClass('menu-hidden')).toBe(true);
         });
          /* Test that ensures the menu changes
           * visibility when the menu icon is clicked. 
@@ -60,9 +61,9 @@ $(function() {
         it('changes visibility when the menu icon is clicked', function(){
             const menuIcon = $('.menu-icon-link');
             $(menuIcon).click(); //triger click event first time
-            expect(body.className).not.toBe('menu-hidden');
+            expect(body.hasClass('menu-hidden')).toBe(false);
             $(menuIcon).click(); //triger click event second time
-            expect(body.className).toBe('menu-hidden');
+            expect(body.hasClass('menu-hidden')).toBe(true);
         });
     });
     /* New test suite named "Initial Entries" */
