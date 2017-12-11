@@ -91,23 +91,25 @@ $(function() {
         /* A test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          */
-        /* Run loadFeed(0) and loadFeed(1) and get first link in each feed */
-        /* Use beforeEach and done() because loadFeed is an asynchronous function */
+        /* Run loadFeed(0) and loadFeed(1) and get first link in each feed to check if they differ */
         let entryLinks = []; // array of entry links to be obtained when loadFeed function is completed
         beforeEach(function (done) {
-            for (let i = 0; i <= 1; i++) {
-                loadFeed(i, function () {
-                    //get first entry link in the feed
-                    let link = $('.entry-link').first().attr("href");
-                    entryLinks.push(link);
+            // get the link of the first entry in a feed
+            function pushEntryLink() {
+                let link = $('.entry-link').first().attr("href");
+                entryLinks.push(link);
+            };
+            loadFeed(0, function () {
+                pushEntryLink();
+                loadFeed(1, function() {
+                    pushEntryLink();
                     done();
-                });
-            }
+                });       
+            });
         });
-        it("the content changes when a new feed is loaded by the loadFeed function", function (done) {
+        it("the content changes when a new feed is loaded by the loadFeed function", function () {
             // Compare first entry links in feed(0) and feed(1);
             expect(entryLinks[0]).not.toEqual(entryLinks[1]);
-            done();
         });
     })
 
