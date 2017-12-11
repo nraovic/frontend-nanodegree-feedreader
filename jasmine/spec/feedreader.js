@@ -81,9 +81,8 @@ $(function() {
                 done();
             });
         });
-        it("there is at least a single .entry element within the .feed container", function(done) {
+        it("there is at least a single .entry element within the .feed container", function() {
             expect(numberOfEntries).toBeGreaterThan(0);
-            done();
         });
     });
 
