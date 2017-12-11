@@ -77,7 +77,7 @@ $(function() {
         let numberOfEntries;
         beforeEach(function (done) {
             loadFeed(0, function () {
-                numberOfEntries = $('.feed').find(".entry").length;
+                numberOfEntries = $('.feed .entry').length;
                 done();
             });
         });
