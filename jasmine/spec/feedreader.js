@@ -91,25 +91,21 @@ $(function() {
         /* A test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          */
-        /* Run loadFeed(0) and loadFeed(1) and get first link in each feed to check if they differ */
-        let entryLinks = []; // array of entry links to be obtained when loadFeed function is completed
+        /* Run loadFeed(0) and loadFeed(1) and get HTML input for .feed to check if they differ */
+        let feed0, feed1;
         beforeEach(function (done) {
             // get the link of the first entry in a feed
-            function pushEntryLink() {
-                let link = $('.entry-link').first().attr("href");
-                entryLinks.push(link);
-            };
             loadFeed(0, function () {
-                pushEntryLink();
+                feed0 = $('.feed').html() //get the HTML input inside .feed
                 loadFeed(1, function() {
-                    pushEntryLink();
+                    feed0 = $('.feed').html() //get the HTML input inside .feed                    console.log($('.entry-link'));
                     done();
-                });       
+                });
             });
         });
         it("the content changes when a new feed is loaded by the loadFeed function", function () {
             // Compare first entry links in feed(0) and feed(1);
-            expect(entryLinks[0]).not.toEqual(entryLinks[1]);
+            expect(feed0).not.toEqual(feed1);
         });
     })
 
