@@ -96,9 +96,9 @@ $(function() {
         beforeEach(function (done) {
             // get the link of the first entry in a feed
             loadFeed(0, function () {
-                feed0 = $('.feed').html() //get the HTML input inside .feed
+                feed0 = $('.feed').html(); //get the HTML input inside .feed
                 loadFeed(1, function() {
-                    feed0 = $('.feed').html() //get the HTML input inside .feed                    console.log($('.entry-link'));
+                    feed0 = $('.feed').html(); //get the HTML input inside .feed                    console.log($('.entry-link'));
                     done();
                 });
             });
